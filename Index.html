@@ -1,1 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #007BFF;
+            transform: scale(1.1);
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+            margin: 20px auto;
+            transition: width 0.5s, height 0.5s;
+        }
+
+        #animatedBox.animated {
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Interactive Web Page</h1>
+    </header>
+    <main>
+        <button id="colorButton">Hover or Click Me!</button>
+        <div id="animatedBox" class="box"></div>
+        <button id="toggleAnimationButton">Toggle Animation</button>
+    </main>
+    <script>
+        // Function to calculate the area of a rectangle
+        function calculateArea(length, width) {
+            return length * width;
+        }
+
+        // Function demonstrating scope
+        let globalVar = "I am global!";
+
+        function scopeExample() {
+            let localVar = "I am local!";
+            console.log(globalVar); // Accessible
+            console.log(localVar);   // Accessible
+        }
+
+        scopeExample();
+        // console.log(localVar); // Uncommenting this will cause an error
+
+        // Function to toggle animation
+        function toggleAnimation() {
+            const box = document.getElementById("animatedBox");
+            box.classList.toggle("animated");
+        }
+
+        // Event listeners
+        document.getElementById("colorButton").addEventListener("click", () => {
+            const box = document.getElementById("animatedBox");
+            box.style.width = box.style.width === "200px" ? "100px" : "200px";
+            box.style.height = box.style.height === "200px" ? "100px" : "200px";
+        });
+
+        document.getElementById("toggleAnimationButton").addEventListener("click", toggleAnimation);
+    </script>
+</body>
+</html>
 
